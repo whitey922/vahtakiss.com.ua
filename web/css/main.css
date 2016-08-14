@@ -1,0 +1,21 @@
+.container {
+    width: 80%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.order {
+    padding: 15px;
+}
+
+.order h2[id*="title"] {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+    width: 200px;
+}
+
+input {
+    width: auto;
+    margin-right: 10px;
+}

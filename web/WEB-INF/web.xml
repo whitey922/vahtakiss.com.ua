@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>mainServlet</servlet-name>
+        <servlet-class>com.vahtakiss.servlets.VkAuth</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mainServlet</servlet-name>
+        <url-pattern>/VkAuth</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Test</servlet-name>
+        <servlet-class>com.vahtakiss.servlets.Test</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Test</servlet-name>
+        <url-pattern>/Test</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ServletOrderIntercept</servlet-name>
+        <servlet-class>com.vahtakiss.servlets.ServletOrderIntercept</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletOrderIntercept</servlet-name>
+        <url-pattern>/YourOrder</url-pattern>
+    </servlet-mapping>
+</web-app>

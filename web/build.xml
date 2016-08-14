@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build-main" basedir="." name="ROOT" >
+
+
+  
+
+  
+  
+  <property file="build.properties" ></property>
+  <property file="../build.properties" ></property>
+  <property file="../../build.properties" ></property>
+  <property file="${user.home}/build.properties" ></property>
+
+  <property name="build.compiler" value="modern" ></property>
+  <property name="webapps.build" value="../build" ></property>
+  <property name="webapps.dist" value="../dist" ></property>
+  <property name="webapp.name" value="ROOT" ></property>
+
+
+  
+  <target name="build-prepare" >
+    <mkdir dir="${webapps.build}" ></mkdir>
+    <mkdir dir="${webapps.build}/${webapp.name}" ></mkdir>
+  </target>
+
+
+  
+  <target depends="build-prepare" name="build-static" >
+    <copy todir="${webapps.build}/${webapp.name}" >
+      <fileset dir="." >
+        <exclude name="build.*" ></exclude>
+      </fileset>
+    </copy>
+  </target>
+
+
+  
+  <target depends="build-static" name="build-main" ></target>
+
+
+  
+  <target depends="build-clean,build-main" name="all" description="Clean and build ROOT webapp" ></target>
+
+
+  
+  <target name="build-clean" >
+    <delete dir="${webapps.build}/${webapp.name}" ></delete>
+  </target>
+
+
+  
+  <target name="dist-prepare" >
+    <mkdir dir="${webapps.dist}" ></mkdir>
+  </target>
+
+
+  
+  <target depends="build-main,dist-prepare" name="dist" description="Create ROOT webapp binary distribution" >
+      <jar basedir="${webapps.build}/${webapp.name}" jarfile="${webapps.dist}/${webapp.name}.war" includes="**" ></jar>
+  </target>
+
+
+  
+  <target name="dist-clean" >
+    <delete dir="${webapps.dist}/${webapp.name}" ></delete>
+  </target>
+
+
+  
+  <target depends="build-clean,dist-clean" name="clean" description="Clean build and dist directories" ></target>
+
+
+</project>
