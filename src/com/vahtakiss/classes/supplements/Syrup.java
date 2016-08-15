@@ -2,6 +2,9 @@ package com.vahtakiss.classes.supplements;
 
 import com.vahtakiss.classes.Beverage;
 import com.vahtakiss.classes.SupplementDecorator;
+import com.vahtakiss.classes.Supplements;
+
+import java.util.List;
 
 public class Syrup implements SupplementDecorator {
     private double price = 0.5;
@@ -9,11 +12,12 @@ public class Syrup implements SupplementDecorator {
 
     public Syrup(Beverage beverage) {
         this.beverage = beverage;
+        beverage.getDescription().add(Supplements.SYRUP.toString().toLowerCase());
     }
 
     @Override
-    public String getDescription( ) {
-        return beverage.getDescription() + ", Syrup";
+    public List<String> getDescription( ) {
+        return beverage.getDescription();
     }
 
     @Override

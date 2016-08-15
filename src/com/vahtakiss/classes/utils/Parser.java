@@ -1,9 +1,11 @@
 package com.vahtakiss.classes.utils;
 
+import com.vahtakiss.classes.Beverage;
 import com.vahtakiss.classes.Supplements;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Parser {
@@ -30,5 +32,26 @@ public class Parser {
         }
 
         return reqMap;
+    }
+
+    public static Map<String, String> beverageToMap(Beverage beverage) {
+        HashMap<String, String> bevMap = new HashMap<String, String>();
+
+        List<String> description = beverage.getDescription();
+
+        bevMap.put("coffee", description.get(0));
+        bevMap.put("sugar", description.get(1));
+
+        Supplements[] supplements = Supplements.values();
+        for (int i = 0; i < supplements.length; i++) {
+            bevMap.put(supplements[i].toString().toLowerCase(), "unchecked");
+        }
+
+        for (int i = 0; i < supplements.length; i++) {
+            if (description.contains(supplements[i].toString().toLowerCase()))
+                bevMap.put(supplements[i].toString().toLowerCase(), "checked");
+        }
+
+        return bevMap;
     }
 }

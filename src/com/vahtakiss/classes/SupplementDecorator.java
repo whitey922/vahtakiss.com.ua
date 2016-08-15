@@ -1,5 +1,7 @@
 package com.vahtakiss.classes;
 
+import java.util.List;
+
 public interface SupplementDecorator extends Beverage {
-    public String getDescription();
+    public List<String> getDescription();
 }

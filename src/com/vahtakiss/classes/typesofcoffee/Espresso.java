@@ -1,20 +1,26 @@
 package com.vahtakiss.classes.typesofcoffee;
 
 import com.vahtakiss.classes.Beverage;
+import com.vahtakiss.classes.Beverages;
 import com.vahtakiss.classes.Sweet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Espresso implements Beverage, Sweet {
-    private String description = "Espresso";
-    private double price = 8.75;
+    private List<String> description = new ArrayList<String>();
+    private double       price       = 8.75;
     private int spoonsOfSugar;
 
     public Espresso(int spoonsOfSugar) {
         this.spoonsOfSugar = spoonsOfSugar;
+        description.add(Beverages.ESPRESSO.toString().toLowerCase());
+        description.add(String.valueOf(spoonsOfSugar));
     }
 
     @Override
-    public String getDescription( ) {
-        return description  + ", Sugar(" + spoonsOfSugar + ")";
+    public List<String> getDescription( ) {
+        return description;
     }
 
     @Override

@@ -2,10 +2,8 @@ package com.vahtakiss.servlets;
 
 import com.vahtakiss.classes.Beverage;
 import com.vahtakiss.classes.BeverageFactory;
-import com.vahtakiss.classes.utils.OrderToEmail;
+import com.vahtakiss.classes.utils.Parser;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -33,17 +31,17 @@ public class Test extends HttpServlet {
         BeverageFactory      factory = new BeverageFactory();
         final List<Beverage> order   = factory.createBeverages(req);
 
-        OrderToEmail orderToEmail = new OrderToEmail(order, link);
-        orderToEmail.sendOrder();
+//        OrderToEmail orderToEmail = new OrderToEmail(order, link);
+//        orderToEmail.sendOrder();
 
-        for (int i = 0; i < order.size(); i++) {
-            System.out.println(order.get(i).getDescription() + " " + order.get(i).cost());
+        for (Beverage bev : order) {
+            System.out.println(Parser.beverageToMap(bev));
         }
 
-        String            url = "/orderInProcessed.jsp";
-        ServletContext    sc  = getServletContext();
-        RequestDispatcher rd  = sc.getRequestDispatcher(url);
-        rd.forward(req, resp);
+//        String            url = "/orderInProcessed.jsp";
+//        ServletContext    sc  = getServletContext();
+//        RequestDispatcher rd  = sc.getRequestDispatcher(url);
+//        rd.forward(req, resp);
     }
 
     private String getCookie(HttpServletRequest req) {

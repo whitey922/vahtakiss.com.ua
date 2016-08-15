@@ -23,12 +23,13 @@ public class OrderToEmail {
         double fullCost = 0;
 
         stringBuilder.append("user: " + id + "\n");
-        for (Beverage elem : order) {
+        for (Beverage bev : order) {
             stringBuilder.append("order: ");
-            stringBuilder.append(elem.getDescription() + "\t");
+            for (String el : bev.getDescription())
+                stringBuilder.append(el + "\t");
             stringBuilder.append("cost: " );
-            stringBuilder.append(String.format("%.2f", elem.cost()) + "\n");
-            fullCost += elem.cost();
+            stringBuilder.append(String.format("%.2f", bev.cost()) + "\n");
+            fullCost += bev.cost();
         }
         stringBuilder.append("Full cost: " + String.format("%.2f", fullCost));
 
