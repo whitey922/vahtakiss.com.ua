@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="static java.awt.SystemColor.text" %>
 <%@ page import="com.vahtakiss.classes.Beverages" %>
+<%@ page import="com.vahtakiss.classes.Supplements" %>
 <html>
 <head>
     <link rel="stylesheet" href="css/main.css"/>
@@ -19,7 +20,7 @@
                 'sugar':    document.getElementById(coffee + "_sugar").value,
                 'milk':     document.getElementById(coffee + "_milk").checked,
                 'nuts':     document.getElementById(coffee + "_nuts").checked,
-                'syrup':    document.getElementById(coffee + "_syrup").checked,
+                'syrup':    document.getElementById(coffee + "_syrup").value,
                 'zephyr':   document.getElementById(coffee + "_zephyr").checked
             };
             localStorage.setItem(Math.floor(Math.random() * (1000000 - 0) + 0), JSON.stringify(orderObject));
@@ -50,20 +51,47 @@
                 <%= beverages[i] %>
             </h2>
 
-            <label for="sugar"> Sugar: </label>
-            <input id="<%=getString(beverages[i], "sugar")%>" name="sugar" type="number" min="0" max="3" value="1"/>
+            <% String sugar = getString(beverages[i], "sugar"); %>
+            <label for="<%=sugar%>"> Sugar: </label>
+            <input id="<%=sugar%>" name="sugar" type="number" min="0" max="3" value="1"/>
 
-            <label for="milk">Milk: </label>
-            <input id="<%=getString(beverages[i], "milk")%>" name="milk" type="checkbox">
+            <% String milk = getString(beverages[i], "milk"); %>
+            <label for="<%=milk%>">Milk: </label>
+            <input id="<%=milk%>" name="milk" type="checkbox">
 
-            <label for="nuts">Nuts: </label>
-            <input id="<%=getString(beverages[i], "nuts")%>" name="nuts" type="checkbox">
+            <% String nuts = getString(beverages[i], "nuts"); %>
+            <label for="<%=nuts%>">Nuts: </label>
+            <input id="<%=nuts%>" name="nuts" type="checkbox">
 
-            <label for="syrup">Syrup: </label>
-            <input id="<%=getString(beverages[i], "syrup")%>" name="syrup" type="checkbox">
+            <% String zephyr = getString(beverages[i], "zephyr"); %>
+            <label for="<%=zephyr%>">Zephyr: </label>
+            <input id="<%=zephyr%>" name="zephyr" type="checkbox">
 
-            <label for="zephyr">Zephyr: </label>
-            <input id="<%=getString(beverages[i], "zephyr")%>" name="zephyr" type="checkbox">
+            <% String syrup = getString(beverages[i], "syrup"); %>
+            <label for="<%=syrup%>">Syrup: </label>
+            <select id="<%=syrup%>" name="syrup">
+                <option value="<%=Supplements.SYRUP_WITH_COCONUT %>">
+                    <%=Supplements.SYRUP_WITH_COCONUT.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_CHOCOLATE %>">
+                    <%=Supplements.SYRUP_WITH_CHOCOLATE.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_RASPBERRY %>">
+                    <%=Supplements.SYRUP_WITH_RASPBERRY.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_CARAMEL %>">
+                    <%=Supplements.SYRUP_WITH_CARAMEL.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_MINT %>">
+                    <%=Supplements.SYRUP_WITH_MINT.getDescription()%>
+                </option>
+                <option value="<%=Supplements.NO_SYRUP %>">
+                    <%=Supplements.NO_SYRUP.getDescription()%>
+                </option>
+            </select>
+            <%--<label for="syrup">Syrup: </label>--%>
+            <%--<input id="<%=getString(beverages[i], "syrup")%>" name="syrup" type="checkbox">--%>
+
 
             <input type="submit" value="Order" onclick="toLocal('<%= beverages[i] %>')"/>
         </form>

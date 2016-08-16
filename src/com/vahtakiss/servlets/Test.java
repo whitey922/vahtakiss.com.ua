@@ -2,6 +2,7 @@ package com.vahtakiss.servlets;
 
 import com.vahtakiss.classes.Beverage;
 import com.vahtakiss.classes.BeverageFactory;
+import com.vahtakiss.classes.utils.OrderToEmail;
 import com.vahtakiss.classes.utils.Parser;
 
 import javax.servlet.ServletException;
@@ -31,8 +32,9 @@ public class Test extends HttpServlet {
         BeverageFactory      factory = new BeverageFactory();
         final List<Beverage> order   = factory.createBeverages(req);
 
-//        OrderToEmail orderToEmail = new OrderToEmail(order, link);
-//        orderToEmail.sendOrder();
+        String description = req.getParameter("description");
+        OrderToEmail orderToEmail = new OrderToEmail(order, link, description);
+        orderToEmail.sendOrder();
 
         for (Beverage bev : order) {
             System.out.println(Parser.beverageToMap(bev));

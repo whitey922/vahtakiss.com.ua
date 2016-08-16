@@ -1,9 +1,6 @@
 package com.vahtakiss.classes;
 
-import com.vahtakiss.classes.supplements.Milk;
-import com.vahtakiss.classes.supplements.Nuts;
-import com.vahtakiss.classes.supplements.Syrup;
-import com.vahtakiss.classes.supplements.Zephyr;
+import com.vahtakiss.classes.supplements.*;
 import com.vahtakiss.classes.typesofcoffee.*;
 import com.vahtakiss.classes.utils.Parser;
 
@@ -74,8 +71,18 @@ public class BeverageFactory {
                 return new Milk(in);
             case NUTS:
                 return new Nuts(in);
-            case SYRUP:
-                return new Syrup(in);
+            case SYRUP_WITH_COCONUT:
+                return new SyrupWithCoconut(in);
+            case SYRUP_WITH_CHOCOLATE:
+                return new SyrupWithChocolate(in);
+            case SYRUP_WITH_RASPBERRY:
+                return new SyrupWithRaspberry(in);
+            case SYRUP_WITH_CARAMEL:
+                return new SyrupWithCaramel(in);
+            case SYRUP_WITH_MINT:
+                return new SyrupWithMint(in);
+            case NO_SYRUP:
+                return new NoSyrup(in);
             case ZEPHYR:
                 return new Zephyr(in);
         }

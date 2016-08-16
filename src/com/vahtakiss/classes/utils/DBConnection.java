@@ -2,13 +2,11 @@ package com.vahtakiss.classes.utils;
 
 //import com.vahtakiss.classes.User;
 
-import com.sun.javafx.binding.StringFormatter;
 import com.vahtakiss.classes.Beverage;
 import com.vahtakiss.classes.BeverageFactory;
-import com.vahtakiss.classes.Beverages;
 
 import java.sql.*;
-import java.util.*;
+import java.util.HashMap;
 
 public class DBConnection {
     private static final String dbName = "gbua_vahtakiss";
@@ -64,7 +62,6 @@ public class DBConnection {
 
     public HashMap<String, Beverage> getUsualOrders(String uid) {
         BeverageFactory factory = new BeverageFactory();
-//        List<Beverage> listBeverages = new ArrayList<Beverage>();
         HashMap<String, Beverage> beverageMap = new HashMap<String, Beverage>();
 
         try {
@@ -82,7 +79,6 @@ public class DBConnection {
                 mapUsualOrder.put("syrup", rs.getString("syrup"));
                 mapUsualOrder.put("zephyr", rs.getString("zephyr"));
                 beverageMap.put(id, factory.createBeverage(mapUsualOrder));
-//                listBeverages.add(factory.createBeverage(mapUsualOrder));
             }
         } catch (Exception var8) {
             var8.printStackTrace();

@@ -7,10 +7,12 @@ import java.util.List;
 public class OrderToEmail {
     private List<Beverage> order;
     private String id;
+    private String description;
 
-    public OrderToEmail(List<Beverage> order, String id) {
+    public OrderToEmail(List<Beverage> order, String id, String description) {
         this.order = order;
         this.id = id;
+        this.description = description;
     }
 
     public void sendOrder() {
@@ -32,6 +34,8 @@ public class OrderToEmail {
             fullCost += bev.cost();
         }
         stringBuilder.append("Full cost: " + String.format("%.2f", fullCost));
+
+        stringBuilder.append("\n\n").append(description);
 
         return stringBuilder.toString();
     }

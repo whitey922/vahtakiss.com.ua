@@ -1,0 +1,40 @@
+<form class="order">
+            <h2 id="<%=beverages[i] + "_title"%>">
+                <%=beverages[i]%>
+            </h2>
+
+            <% String sugar = beverages[i] + "_sugar"; %>
+            <label for="<%=sugar%>"> Sugar: </label>
+            <input id="<%=sugar%>" name="sugar" type="number" min="0" max="3" value="1"/>
+
+            <% String milk = beverages[i] + "_milk"; %>
+            <label for="<%=milk%>">Milk: </label>
+            <input id=""<%=milk%>" name="milk" type="checkbox">
+
+            <% String nuts = beverages[i] + "_nuts"; %>
+            <label for="<%=nuts%>">Nuts: </label>
+            <input id="<%=nuts%>" name="nuts" type="checkbox">
+
+            <% String zephyr = beverages[i] + "_zephyr"; %>
+            <label for="<%=zephyr%>">Zephyr: </label>
+            <input id="<%=zephyr%>" name="zephyr" type="checkbox">
+
+            <% String syrup = beverages[i] + "_syrup"; %>
+            <label for="<%=syrup%>">Syrup: </label>
+            <select id="<%=syrup%>" name="syrup">
+                <option value="<%=Supplements.SYRUP_WITH_ALMOND%>">
+                    <%=Supplements.SYRUP_WITH_ALMOND.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_CHERRY%>">
+                    <%=Supplements.SYRUP_WITH_CHERRY.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_NUTS%>">
+                    <%=Supplements.SYRUP_WITH_NUTS.getDescription()%>
+                </option>
+                <option value="null">
+                    no syrup
+                </option>
+            </select>
+
+            <input type="submit" value="Order" onclick="toLocal('<%=beverages[i]%>')"/>
+        </form>

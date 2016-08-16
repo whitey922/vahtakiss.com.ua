@@ -6,13 +6,14 @@ import com.vahtakiss.classes.Supplements;
 
 import java.util.List;
 
-public class Syrup implements SupplementDecorator {
-    private double price = 0.5;
+public class SyrupWithChocolate implements SupplementDecorator {
+    private double price = 0.9;
     Beverage beverage;
 
-    public Syrup(Beverage beverage) {
+    public SyrupWithChocolate(Beverage beverage) {
         this.beverage = beverage;
-        beverage.getDescription().add(Supplements.SYRUP.toString().toLowerCase());
+        beverage.getDescription().
+                add(Supplements.SYRUP_WITH_CHOCOLATE.toString().toLowerCase());
     }
 
     @Override
