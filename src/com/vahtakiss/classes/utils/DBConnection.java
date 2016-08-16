@@ -1,15 +1,14 @@
 package com.vahtakiss.classes.utils;
 
 //import com.vahtakiss.classes.User;
+
+import com.sun.javafx.binding.StringFormatter;
 import com.vahtakiss.classes.Beverage;
 import com.vahtakiss.classes.BeverageFactory;
 import com.vahtakiss.classes.Beverages;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DBConnection {
     private static final String dbName = "gbua_vahtakiss";
@@ -19,7 +18,7 @@ public class DBConnection {
     private Connection connection;
 
     public static DBConnection getInstance() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        if(instance == null) {
+        if (instance == null) {
             instance = new DBConnection(String.format("jdbc:mysql://mysql301.1gb.ua/gbua_vahtakiss?user=gbua_vahtakiss&password=677afec7789", new Object[0]));
         }
 
@@ -63,29 +62,31 @@ public class DBConnection {
         preparedStmt.execute();
     }
 
-    public List<Beverage> getUsualOrders(String uid) {
+    public HashMap<String, Beverage> getUsualOrders(String uid) {
         BeverageFactory factory = new BeverageFactory();
-        List<Beverage> listBeverages = new ArrayList<Beverage>();
+//        List<Beverage> listBeverages = new ArrayList<Beverage>();
+        HashMap<String, Beverage> beverageMap = new HashMap<String, Beverage>();
 
         try {
-            Statement e = this.connection.createStatement();
-            ResultSet rs = e.executeQuery(String.format("select * from usual_order WHERE id='{0}'", uid));
-
-            while(rs.next()) {
+            String query = "select * from usual_order WHERE uid=?";
+            PreparedStatement preparedStmt = this.connection.prepareStatement(query);
+            preparedStmt.setString(1, uid);
+            ResultSet rs = preparedStmt.executeQuery();
+            while (rs.next()) {
                 HashMap<String, String> mapUsualOrder = new HashMap<String, String>();
-
-                mapUsualOrder.put("id", rs.getString("id"));
+                String id = rs.getString("id");
                 mapUsualOrder.put("coffee", rs.getString("coffee"));
                 mapUsualOrder.put("sugar", rs.getString("sugar"));
                 mapUsualOrder.put("milk", rs.getString("milk"));
                 mapUsualOrder.put("nuts", rs.getString("nuts"));
                 mapUsualOrder.put("syrup", rs.getString("syrup"));
                 mapUsualOrder.put("zephyr", rs.getString("zephyr"));
-                listBeverages.add(factory.createBeverage(mapUsualOrder));
+                beverageMap.put(id, factory.createBeverage(mapUsualOrder));
+//                listBeverages.add(factory.createBeverage(mapUsualOrder));
             }
         } catch (Exception var8) {
             var8.printStackTrace();
         }
-        return  listBeverages;
+        return beverageMap;
     }
 }

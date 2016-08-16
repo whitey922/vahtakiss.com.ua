@@ -39,10 +39,12 @@
     var count = 0;
     for (var i in localStorage) {
         var ord = JSON.parse(localStorage[i]);
+        
         $("#orderList tbody").append(
                 "<tr>" + "" +
+                "<td>" + "<input type='hidden' id=" + i + "></td>" +
                 "<td>" + "<input type='hidden' name=" + "coffee" + count + " value=" + ord.coffee + " id=" + "coffee" + count + ">" + ord.coffee + "</td>" +
-                "<td>" + "<input type='number' min='0' max='2' name=" + "sugar" + count + " value=" + ord.sugar + " id=" + "sugar" + count + ">" + "</td>" +
+                "<td>" + "<input type='number' min='0' max='4' name=" + "sugar" + count + " value=" + ord.sugar + " id=" + "sugar" + count + ">" + "</td>" +
                 "<td>" + "Milk: " + "<input id=" + "milk" + count + " type='checkbox' name=" + "milk" + count + ">" + "</td>" +
                 "<td>" + "Nuts: " + "<input id=" + "nuts" + count + " type='checkbox' name=" + "nuts" + count + ">" + "</td>" +
                 "<td>" + "Syrup: " + "<input id=" + "syrup" + count + " type='checkbox' name=" + "syrup" + count + ">" + "</td>" +

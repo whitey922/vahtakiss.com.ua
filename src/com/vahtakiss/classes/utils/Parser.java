@@ -21,20 +21,20 @@ public class Parser {
         Supplements[] supplements = Supplements.values();
 
         for (int i = 0; i < supplements.length; i++) {
-            reqMap.put(supplements[i].toString().toLowerCase(), "off");
+            reqMap.put(supplements[i].toString().toLowerCase(), "0");
         }
 
         for (int i = 0; i < supplements.length; i++) {
             String request = req.getParameter(supplements[i].toString().toLowerCase() + current);
             if (request != null)
                 if (request.equals("on"))
-                    reqMap.put(supplements[i].toString().toLowerCase(), "on");
+                    reqMap.put(supplements[i].toString().toLowerCase(), "1");
         }
 
         return reqMap;
     }
 
-    public static Map<String, String> beverageToMap(Beverage beverage) {
+    public static HashMap<String, String> beverageToMap(Beverage beverage) {
         HashMap<String, String> bevMap = new HashMap<String, String>();
 
         List<String> description = beverage.getDescription();
