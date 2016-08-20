@@ -60,20 +60,6 @@ public class DBConnection {
         preparedStmt.execute();
     }
 
-
-    public void addUsualOrder(String uid/*, String coffee, String sugar, String milk, String nuts, String zephyr, String syrup*/) throws SQLException {
-        String query = "INSERT INTO usual_order(uid/*, coffee, sugar, milk, nuts, zephyr, syrup*/) values (?/*, ?, ?, ?, ?, ?, ?*/)";
-        PreparedStatement preparedStmt = this.connection.prepareStatement(query);
-        preparedStmt.setString(1, uid);
-//        preparedStmt.setString(2, coffee);
-//        preparedStmt.setString(3, sugar);
-//        preparedStmt.setString(4, milk);
-//        preparedStmt.setString(5, nuts);
-//        preparedStmt.setString(6, zephyr);
-//        preparedStmt.setString(7, syrup);
-        preparedStmt.execute();
-    }
-
     public HashMap<String, Beverage> getUsualOrders(String uid) {
         BeverageFactory factory = new BeverageFactory();
         HashMap<String, Beverage> beverageMap = new HashMap<String, Beverage>();
@@ -99,28 +85,4 @@ public class DBConnection {
         }
         return beverageMap;
     }
-
-    public void updateUsualOrder(String id, String coffee, String sugar, String milk, String nuts, String zephyr, String syrup) throws SQLException {
-        String query = "UPDATE `usual_trips` SET " +
-                "`coffee`=?," +
-                "`sugar`=?," +
-                "`milk`=?," +
-                "`nuts`=?," +
-                "`syrup`=?," +
-                "`zephyr`=?," +
-                "`time_finish`=? WHERE ID=?";
-
-        PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setString(1, coffee);
-        preparedStmt.setString(2, sugar);
-        preparedStmt.setBoolean(3, Boolean.valueOf(milk));
-        preparedStmt.setBoolean(4, Boolean.valueOf(nuts));
-        preparedStmt.setBoolean(5, Boolean.valueOf(zephyr));
-        preparedStmt.setBoolean(6, Boolean.valueOf(syrup));
-        preparedStmt.setString(7, id);
-
-        preparedStmt.execute();
-    }
-
-
 }

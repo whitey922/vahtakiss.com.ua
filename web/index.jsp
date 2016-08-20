@@ -1,13 +1,32 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Tony
+  Date: 03.08.2016
+  Time: 10:14
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="static java.awt.SystemColor.text" %>
 <%@ page import="com.vahtakiss.classes.Beverages" %>
 <%@ page import="com.vahtakiss.classes.Supplements" %>
 <html>
 <head>
     <link rel="stylesheet" href="css/main.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
     <title>VahtaKiss</title>
-    <script src="js/addorder.js"></script>
+    <script>
+        function toLocal(coffee) {
+            var orderObject = {
+                'coffee':   document.getElementById(coffee + "_title").innerHTML,
+                'sugar':    document.getElementById(coffee + "_sugar").value,
+                'milk':     document.getElementById(coffee + "_milk").checked,
+                'nuts':     document.getElementById(coffee + "_nuts").checked,
+                'syrup':    document.getElementById(coffee + "_syrup").value,
+                'zephyr':   document.getElementById(coffee + "_zephyr").checked
+            };
+            localStorage.setItem(Math.floor(Math.random() * (1000000 - 0) + 0), JSON.stringify(orderObject));
+        }
+    </script>
+
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?125"></script>
     <script type="text/javascript">
         VK.init({apiId: 5282019});
@@ -17,7 +36,7 @@
 <div class="container">
     <div class="row">
         <h1>Авторизуйтесь</h1>
-        <div class="row">
+        <div class = "row">
             <div id="vk_auth"></div>
         </div>
     </div>
@@ -27,7 +46,7 @@
         <%! Beverages[] beverages = Beverages.values(); %>
         <% for (int i = 0; i < beverages.length; i++) { %>
 
-        <form class="<%= beverages[i] %>_order">
+        <form class="order">
             <h2 id="<%=getString(beverages[i], "title")%>">
                 <%= beverages[i] %>
             </h2>
@@ -50,19 +69,31 @@
 
             <% String syrup = getString(beverages[i], "syrup"); %>
             <label for="<%=syrup%>">Syrup: </label>
-            <input type="radio" name="syrup"
-                   value="<%=Supplements.NO_SYRUP %>"> <%=Supplements.NO_SYRUP.getDescription()%>
-            <input type="radio" name="syrup"
-                   value="<%=Supplements.SYRUP_WITH_COCONUT %>"> <%=Supplements.SYRUP_WITH_COCONUT.getDescription()%>
-            <input type="radio" name="syrup"
-                   value="<%=Supplements.SYRUP_WITH_CHOCOLATE %>"> <%=Supplements.SYRUP_WITH_CHOCOLATE.getDescription()%>
-            <input type="radio" name="syrup"
-                   value="<%=Supplements.SYRUP_WITH_RASPBERRY %>"> <%=Supplements.SYRUP_WITH_RASPBERRY.getDescription()%>
-            <input type="radio" name="syrup"
-                   value="<%=Supplements.SYRUP_WITH_CARAMEL %>"> <%=Supplements.SYRUP_WITH_CARAMEL.getDescription()%>
-            <input type="radio" name="syrup"
-                   value="<%=Supplements.SYRUP_WITH_MINT %>"> <%=Supplements.SYRUP_WITH_MINT.getDescription()%>
-            <input type="button" value="Order" onclick="Add('<%= beverages[i] %>')"/>
+            <select id="<%=syrup%>" name="syrup">
+                <option value="<%=Supplements.SYRUP_WITH_COCONUT %>">
+                    <%=Supplements.SYRUP_WITH_COCONUT.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_CHOCOLATE %>">
+                    <%=Supplements.SYRUP_WITH_CHOCOLATE.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_RASPBERRY %>">
+                    <%=Supplements.SYRUP_WITH_RASPBERRY.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_CARAMEL %>">
+                    <%=Supplements.SYRUP_WITH_CARAMEL.getDescription()%>
+                </option>
+                <option value="<%=Supplements.SYRUP_WITH_MINT %>">
+                    <%=Supplements.SYRUP_WITH_MINT.getDescription()%>
+                </option>
+                <option value="<%=Supplements.NO_SYRUP %>">
+                    <%=Supplements.NO_SYRUP.getDescription()%>
+                </option>
+            </select>
+            <%--<label for="syrup">Syrup: </label>--%>
+            <%--<input id="<%=getString(beverages[i], "syrup")%>" name="syrup" type="checkbox">--%>
+
+
+            <input type="submit" value="Order" onclick="toLocal('<%= beverages[i] %>')"/>
         </form>
 
         <% } %>
