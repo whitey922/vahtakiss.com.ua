@@ -1,4 +1,4 @@
-package com.vahtakiss.classes;
+package com.vahtakiss.classes.basement;
 
 public interface Sweet {
     public int getSugarAmount();

@@ -1,6 +1,6 @@
 <%@ page import="com.vahtakiss.classes.utils.DBConnection" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="com.vahtakiss.classes.Beverage" %>
+<%@ page import="com.vahtakiss.classes.basement.Beverage" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.vahtakiss.classes.utils.Parser" %>

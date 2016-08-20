@@ -1,8 +1,8 @@
 package com.vahtakiss.classes.supplements;
 
-import com.vahtakiss.classes.Beverage;
-import com.vahtakiss.classes.SupplementDecorator;
-import com.vahtakiss.classes.Supplements;
+import com.vahtakiss.classes.basement.Beverage;
+import com.vahtakiss.classes.basement.SupplementDecorator;
+import com.vahtakiss.classes.basement.Supplements;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Nuts implements SupplementDecorator{
     }
 
     @Override
-    public double cost( ) {
-        return beverage.cost() + price;
+    public double getCost( ) {
+        return beverage.getCost() + price;
     }
 }

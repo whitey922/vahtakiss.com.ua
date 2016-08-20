@@ -1,7 +1,7 @@
 package com.vahtakiss.classes.utils;
 
-import com.vahtakiss.classes.Beverage;
-import com.vahtakiss.classes.Supplements;
+import com.vahtakiss.classes.basement.Beverage;
+import com.vahtakiss.classes.basement.Supplements;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

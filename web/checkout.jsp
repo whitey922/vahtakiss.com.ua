@@ -1,4 +1,4 @@
-<%@ page import="com.vahtakiss.classes.Supplements" %><%--
+<%@ page import="com.vahtakiss.classes.basement.Supplements" %><%--
   Created by IntelliJ IDEA.
   User: Yegorov
   Date: 04.08.2016
@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <h1>Корзина</h1>
-        <form action="Test" method="POST">
+        <form action="OrderReceiver" method="POST">
             <table id="orderList">
                 <tbody>
 

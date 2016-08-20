@@ -1,8 +1,8 @@
 package com.vahtakiss.classes.typesofcoffee;
 
-import com.vahtakiss.classes.Beverage;
-import com.vahtakiss.classes.Beverages;
-import com.vahtakiss.classes.Sweet;
+import com.vahtakiss.classes.basement.Beverage;
+import com.vahtakiss.classes.basement.Beverages;
+import com.vahtakiss.classes.basement.Sweet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Latte implements Beverage, Sweet{
     }
 
     @Override
-    public double cost( ) {
+    public double getCost( ) {
         return price;
     }
 
