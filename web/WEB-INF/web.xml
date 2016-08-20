@@ -34,4 +34,24 @@
         <servlet-name>ServletOrderIntercept</servlet-name>
         <url-pattern>/YourOrder</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletAddUsualOrder</servlet-name>
+        <servlet-class>com.vahtakiss.servlets.AddUsualOrder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletAddUsualOrder</servlet-name>
+        <url-pattern>/AddUsualOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletEditUsualOrder</servlet-name>
+        <servlet-class>com.vahtakiss.servlets.EditUsualOrder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletEditUsualOrder</servlet-name>
+        <url-pattern>/EditUsualOrder</url-pattern>
+    </servlet-mapping>
 </web-app>

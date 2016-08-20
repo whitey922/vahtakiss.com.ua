@@ -38,8 +38,9 @@ public class BeverageFactory {
 
         for (int i = 0; i < supplements.length; i++) {
             String request = req.get(supplements[i].toString().toLowerCase());
-            if (request.equals("1"))
-                beverage = addSupplements(beverage, supplements[i]);
+            if (request != null)
+                if (request.equals("1"))
+                    beverage = addSupplements(beverage, supplements[i]);
         }
 
         return beverage;

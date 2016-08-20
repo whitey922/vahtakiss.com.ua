@@ -16,43 +16,48 @@
 <div class="container">
     <div class="row">
         <h1>Ваши заказы</h1>
+
+        <%
+            String uid = "";
+            Cookie cookies[] = request.getCookies();
+            for (Cookie cookie : cookies) {
+                if (cookie.getValue() == "uid") uid = cookie.getValue();
+            }
+
+            HashMap<String, Beverage> beveragesMap = null;
+            try {
+                beveragesMap = DBConnection.getInstance().getUsualOrders("23338953");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+            Set<Map.Entry<String, Beverage>> beverageSet = beveragesMap.entrySet();
+            for (Map.Entry<String, Beverage> elem : beverageSet) {
+                HashMap<String, String> beverageMap = Parser.beverageToMap(elem.getValue());
+        %>
         <form action="EditUsualOrder" class="order">
-            <%
-                String uid = "";
-                Cookie cookies[] = request.getCookies();
-                for (Cookie cookie : cookies) {
-                    if (cookie.getValue() == "uid") uid = cookie.getValue();
-                }
+            <input type="text" name="coffee" value="<%=beverageMap.get("coffee")%>">
+            <input type="number" name="sugar<" value="<%=beverageMap.get("sugar")%>">
+            <input type="checkbox" name="milk" value="<%=beverageMap.get("milk")%>">
+            <input type=" checkbox" name="nuts" value="<%=beverageMap.get("nuts")%>">
+            <input type="checkbox" name="syrup" value="<%=beverageMap.get("syrup")%>">
+            <input type=" checkbox" name="zephyr" value="<%=beverageMap.get("zephyr")%>">
 
-                HashMap<String, Beverage> beveragesMap = null;
-                try {
-                    beveragesMap = DBConnection.getInstance().getUsualOrders("23338953");
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-
-                Set<Map.Entry<String, Beverage>> beverageSet = beveragesMap.entrySet();
-                for (Map.Entry<String, Beverage> elem : beverageSet) {
-                    HashMap<String, String> beverageMap = Parser.beverageToMap(elem.getValue());
-            %>
-
-            <input type="text" name="coffee<%=elem.getKey()%>" value="<%=beverageMap.get("coffee")%>">
-            <input type="number" name="sugar<%=elem.getKey()%>" value="<%=beverageMap.get("sugar")%>">
-            <input type="checkbox" name="milk<%=elem.getKey()%>" <%=beverageMap.get("milk")%>>
-            <input type="checkbox" name="nuts<%=elem.getKey()%>" <%=beverageMap.get("nuts")%>>
-            <input type="checkbox" name="syrup<%=elem.getKey()%>" <%=beverageMap.get("syrup")%>>
-            <input type="checkbox" name="zephyr<%=elem.getKey()%>" <%=beverageMap.get("zephyr")%>>
-
-            <%}%>
             <input type="submit" value="SAVE CHANGES">
+        </form>
+        <%}%>
+        <form action="AddUsualOrder">
+            <input type="hidden" name="uid" value="<%=uid%>">
+            <input type="submit" name="addusualorder" value="save">
         </form>
     </div>
 </div>
+
 </body>
 </html>

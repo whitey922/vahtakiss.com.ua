@@ -9,17 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/**
- * Created by Caesar on 15.08.2016.
- */
-public class EditUsualOrder extends HttpServlet {
+public class AddUsualOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            DBConnection.getInstance().updateUsualOrder(req.getParameter("id"),req.getParameter("coffee"),
-                    req.getParameter("sugar"), req.getParameter("milk"),
-                    req.getParameter("nuts"), req.getParameter("zephyr"),
-                    req.getParameter("syrup"));
+            DBConnection.getInstance().addUsualOrder(req.getParameter("uid"));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
