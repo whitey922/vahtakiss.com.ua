@@ -1,4 +1,4 @@
-package com.vahtakiss.classes;
+package com.vahtakiss.classes.basement;
 
 import com.vahtakiss.classes.supplements.*;
 import com.vahtakiss.classes.typesofcoffee.*;
@@ -89,5 +89,4 @@ public class BeverageFactory {
 
         return null;
     }
-
 }

@@ -1,8 +1,8 @@
-package com.vahtakiss.classes;
+package com.vahtakiss.classes.basement;
 
 import java.util.List;
 
 public interface Beverage {
     public List<String> getDescription();
-    public double cost();
+    public double getCost();
 }

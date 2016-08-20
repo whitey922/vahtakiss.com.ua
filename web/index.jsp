@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="static java.awt.SystemColor.text" %>
-<%@ page import="com.vahtakiss.classes.Beverages" %>
-<%@ page import="com.vahtakiss.classes.Supplements" %>
+<%@ page import="com.vahtakiss.classes.basement.Beverages" %>
+<%@ page import="com.vahtakiss.classes.basement.Supplements" %>
 <html>
 <head>
     <link rel="stylesheet" href="css/main.css"/>

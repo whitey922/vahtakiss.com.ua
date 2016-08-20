@@ -1,4 +1,4 @@
-package com.vahtakiss.classes;
+package com.vahtakiss.classes.basement;
 
 import java.util.List;
 

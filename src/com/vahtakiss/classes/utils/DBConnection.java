@@ -2,8 +2,8 @@ package com.vahtakiss.classes.utils;
 
 //import com.vahtakiss.classes.User;
 
-import com.vahtakiss.classes.Beverage;
-import com.vahtakiss.classes.BeverageFactory;
+import com.vahtakiss.classes.basement.Beverage;
+import com.vahtakiss.classes.basement.BeverageFactory;
 
 import java.sql.*;
 import java.util.HashMap;

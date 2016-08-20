@@ -1,4 +1,4 @@
-package com.vahtakiss.classes;
+package com.vahtakiss.classes.basement;
 
 public enum Supplements {
     MILK("milk"),

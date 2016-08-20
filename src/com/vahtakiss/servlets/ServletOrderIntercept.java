@@ -1,6 +1,6 @@
 package com.vahtakiss.servlets;
 
-import com.vahtakiss.classes.Beverage;
+import com.vahtakiss.classes.basement.Beverage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.vahtakiss.classes.Beverage" %><%--
+<%@ page import="com.vahtakiss.classes.basement.Beverage" %><%--
   Created by IntelliJ IDEA.
   User: Tony
   Date: 06.08.2016
